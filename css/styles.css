@@ -1,0 +1,242 @@
+:root {
+  --form-bg-colour: linear-gradient(to right, #327bae, #3577ad, #3973ac, #3e6fab, #436ba9);
+  --form-focus-colour: #f9f871;
+  --form-error-colour: #ff8775;
+  --form-success-colour: #22bc22;
+  --form-focus-text-colour: #0b0c0c;
+  --form-text-colour: #fff;
+  --form-grey-colour: #ffffffd5;
+  --form-btn-outline-colour: #1b050552;
+  --fadeIn-animation: fadeIn 1s ease-in-out;
+  --fadeOut-animation: fadeOut 1s ease-in-out;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+
+  background-image: var(--form-bg-colour);
+  color: var(--form-text-colour);
+  overflow: hidden;
+}
+
+.snt-form {
+  position: relative;
+  width: min(90%, 35rem);
+
+  border-width: 3px;
+  border-style: dotted;
+  border-color: var(--form-grey-colour);
+
+  padding: 2rem;
+  box-shadow: 0 15px 20px -3px rgba(0, 0, 0, 0.1), 0 8px 12px -4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+}
+
+@media (max-width: 615px) {
+  .snt-form {
+    padding: 1rem;
+  }
+}
+
+.snt-form_close-btn {
+  position: absolute;
+  top: -4rem;
+  right: -3rem;
+  cursor: pointer;
+}
+
+@media (max-width: 615px) {
+  .snt-form_close-btn {
+    top: -3rem;
+    right: 0;
+  }
+}
+
+.snt-form_heading {
+  font-size: clamp(1rem, 0.45rem + 1.5vw, 2rem);
+  margin-bottom: 1rem;
+  opacity: 0;
+}
+
+.snt-form_subheading {
+  font-size: clamp(0.8rem, 0.2rem + 1vw, 1.1rem);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.controlgroup_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (max-width: 615px) {
+  .controlgroup_wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.controlgroup,
+.controlgroup input {
+  width: 100%;
+}
+
+.controlgroup label {
+  font-size: clamp(0.7rem, 0.3rem + 1vw, 0.9rem);
+  color: var(--form-grey-colour);
+}
+
+.controlgroup input {
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+::placeholder {
+  font-size: 0.8rem;
+  color: var(--form-focus-text-colour);
+}
+
+.controlgroup-checkbox {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+.controlgroup-checkbox label {
+  order: 1;
+}
+
+.snt-form_policy {
+  color: var(--form-text-colour);
+  font-weight: bold;
+}
+
+.snt-form_policy:hover {
+  color: var(--form-focus-colour);
+}
+
+.snt-form_message {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: -30rem;
+}
+
+.control {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-submit_btn {
+  position: relative;
+  display: block;
+
+  font-weight: bold;
+  color: var(--form-text-colour);
+  background: none;
+  border: 2px solid var(--form-text-colour);
+
+  padding: 0.5rem 2.5rem;
+  margin: 1rem auto 0;
+  transition: all 0.3s ease-in-out;
+
+  cursor: pointer;
+}
+
+.control-submit_btn:disabled {
+  opacity: 0.4;
+}
+
+.control-submit_btn:active {
+  transform: translateY(4px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.control-submit_btn:hover {
+  background-color: var(--form-text-colour);
+  color: var(--form-focus-text-colour);
+  transition: all 0.3s ease-in-out;
+}
+
+.control-submit_btn:hover::after {
+  inset: 0;
+}
+
+.control-submit_btn::after {
+  content: "";
+
+  position: absolute;
+  top: 0.2rem;
+  bottom: -0.37rem;
+  left: 0.2rem;
+  right: -0.3rem;
+
+  border: 2px solid var(--form-btn-outline-colour);
+  z-index: -1;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--form-focus-colour);
+}
+
+input:focus,
+a:focus {
+  border: 2px solid var(--form-focus-text-colour);
+  outline: 2px solid var(--form-focus-colour);
+}
+
+input:valid {
+  background-color: var(--form-success-colour);
+  color: var(--form-text-colour);
+}
+
+input:focus:invalid {
+  background-color: var(--form-error-colour);
+  color: var(--form-text-colour);
+}
+
+.email-error_msg,
+.tel-error_msg,
+.checkbox-error_msg {
+  font-size: 0.7rem;
+}
+
+.js-form-animation {
+  opacity: 1;
+}
+
+.spinner {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}

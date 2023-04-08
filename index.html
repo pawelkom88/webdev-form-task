@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form - web developer task</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/index.js" defer></script>
+  </head>
+  <body>
+    <h1 class="snt-form_heading">Like our blogs ?</h1>
+    <form class="snt-form" novalidate>
+      <h2 class="snt-form_subheading">
+        Enter your details below to register for the monthly newsletter. You can unsubscribe from
+        these at any time
+      </h2>
+
+      <div class="controlgroup_wrapper">
+        <div class="controlgroup">
+          <label for="snt-form_ContactPropertyFirstName">First Name</label>
+          <div class="control">
+            <input
+              placeholder="Enter your first name"
+              type="text"
+              id="snt-form_ContactPropertyFirstName"
+              name="ContactPropertyFirstName"
+              required />
+            *
+          </div>
+        </div>
+
+        <div class="controlgroup">
+          <label for="snt-form_ContactPropertyLastName">Last Name</label>
+          <div class="control">
+            <input
+              placeholder="Enter your last name"
+              type="text"
+              id="snt-form_ContactPropertyLastName"
+              name="ContactPropertyLastName"
+              required />
+            *
+          </div>
+        </div>
+      </div>
+
+      <div class="controlgroup_wrapper">
+        <div class="controlgroup">
+          <label for="snt-form_ContactPropertyEmailAddress">Email Address</label>
+          <div class="control">
+            <input
+              aria-describedby="email"
+              placeholder="Enter your e-mail address"
+              type="email"
+              id="snt-form_ContactPropertyEmailAddress"
+              name="ContactPropertyEmailAddress"
+              required />
+            *
+          </div>
+          <span class="email-error_msg"></span>
+          <span id="email" hidden>Enter valid e-mail address</span>
+        </div>
+
+        <div class="controlgroup">
+          <label for="snt-form_ContactPropertyPhoneNumber">Phone Number</label>
+          <div class="control">
+            <input
+              aria-describedby="tel"
+              placeholder="Enter your telephone number"
+              type="tel"
+              pattern="[0-9]{11}"
+              id="snt-form_ContactPropertyPhoneNumber"
+              name="ContactPropertyPhoneNumber"
+              autocomplete="tel"
+              required />
+            *
+          </div>
+          <span class="tel-error_msg"></span>
+          <span id="tel" hidden>Enter valid UK tel number</span>
+        </div>
+      </div>
+
+      <div class="controlgroup controlgroup-checkbox">
+        <label for="snt-form_ContactPropertyCheckbox"
+          >I agree that I have read and accept the
+          <a
+            class="snt-form_policy"
+            href="http://www.fortem-international.com/privacy"
+            target="_blank"
+            rel="noreferrer noopener"
+            >privacy policy</a
+          ></label
+        >
+        <div class="control">
+          <input
+            aria-describedby="checkbox"
+            type="checkbox"
+            id="snt-form_ContactPropertyCheckbox"
+            name="ContactPropertyCheckbox"
+            required />
+        </div>
+      </div>
+      <span class="checkbox-error_msg"></span>
+      <span id="checkbox" hidden>This field is required</span>
+
+      <div class="controlgroup">
+        <div class="control">
+          <button type="submit" class="control-submit_btn">Sign up</button>
+        </div>
+      </div>
+      <span class="snt-form_close-btn"
+        ><svg
+          tabindex="0"
+          class="close-btn"
+          width="25"
+          fill="#fff"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          id="close">
+          <path
+            d="M13.41,12l6.3-6.29a1,1,0,1,0-1.42-1.42L12,10.59,5.71,4.29A1,1,0,0,0,4.29,5.71L10.59,12l-6.3,6.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l6.29,6.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"></path>
+        </svg>
+      </span>
+    </form>
+    <p class="spinner">loading...</p>
+    <section class="snt-form_message">
+      <h3>Thank you for subscribing to our newsletter</h3>
+      <svg
+        tabindex="0"
+        width="50px"
+        fill="#fff"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 50 50"
+        id="mail">
+        <path
+          d="M1 11.487V43h48V7H1v4.487zm2 1.566 15.6 12.209L3 38.886V13.053zM3.62 41l16.584-14.483L25 30.27l4.796-3.753L46.38 41H3.62zM47 38.886 31.4 25.261 47 13.052v25.834zM3 9h44v1.513L25 27.73 3 10.513V9z"></path>
+      </svg>
+      <button type="button" class="reset-btn control-submit_btn">Reload page</button>
+    </section>
+  </body>
+</html>
