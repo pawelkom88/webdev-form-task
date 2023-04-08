@@ -10,6 +10,13 @@ function init() {
   const errorMsgEmail = document.querySelector(".email-error_msg");
   const errorMsgTel = document.querySelector(".tel-error_msg");
 
+  const errorMsg = {
+    checkbox: "This field is required",
+    tel: "Enter valid UK mobile number",
+    email: "Enter an email address",
+    empty: "",
+  };
+
   let areInputsValidated;
 
   showForm();
@@ -24,21 +31,23 @@ function init() {
     if (e.key === "Enter") hideForm();
   });
 
-  form.addEventListener("keypress", validateInputs);
-
-  form.addEventListener("change", () => {
+  checkbox.addEventListener("click", () => {
     const checkboxMsg = document.querySelector(".checkbox-error_msg");
 
     if (!checkbox.checked) {
-      checkboxMsg.textContent = "This field is required";
-      checkboxMsg.style.border = "3px solid var(--form-error-colour)";
+      checkboxMsg.textContent = errorMsg.checkbox;
+      checkboxMsg.style.border = "var(--error-msg-border-clr)";
     } else {
-      checkboxMsg.textContent = "";
+      checkboxMsg.textContent = errorMsg.empty;
       checkboxMsg.style.border = "none";
     }
-
-    checkbox.checked && areInputsValidated ? enableButton() : disableButton();
   });
+
+  form.addEventListener("keypress", validateInputs);
+
+  form.addEventListener("change", () =>
+    checkbox.checked && areInputsValidated ? enableButton() : disableButton()
+  );
 
   function validateInputs() {
     inputs.forEach(input => {
@@ -95,8 +104,8 @@ function init() {
   }
 
   function hideLoadingMsg() {
-    const spinner = document.querySelector(".spinner");
-    spinner.style.display = "none";
+    const loadingMsg = document.querySelector(".loading-msg");
+    loadingMsg.style.display = "none";
   }
 
   function hideForm() {
@@ -105,22 +114,22 @@ function init() {
   }
 
   function showError(input) {
-    if (!input.checkValidity() && input.type == "email") {
-      errorMsgEmail.textContent = "Enter an email address.";
-      errorMsgEmail.style.border = "3px solid var(--form-error-colour)";
+    if (!input.checkValidity() && input.type === "email") {
+      errorMsgEmail.textContent = errorMsg.email;
+      errorMsgEmail.style.border = "var(--error-msg-border-clr)";
     }
 
-    if (!input.checkValidity() && input.type == "tel") {
-      errorMsgTel.textContent = "Enter valid UK mobile number";
-      errorMsgTel.style.border = "3px solid var(--form-error-colour)";
+    if (!input.checkValidity() && input.type === "tel") {
+      errorMsgTel.textContent = errorMsg.tel;
+      errorMsgTel.style.border = "var(--error-msg-border-clr)";
     }
     areInputsValidated = false;
   }
 
   function showSuccess(input) {
     if (input.checkValidity()) {
-      errorMsgEmail.textContent = "";
-      errorMsgTel.textContent = "";
+      errorMsgEmail.textContent = errorMsg.empty;
+      errorMsgTel.textContent = errorMsg.empty;
       errorMsgEmail.style.border = "none";
       errorMsgTel.style.border = "none";
       areInputsValidated = true;

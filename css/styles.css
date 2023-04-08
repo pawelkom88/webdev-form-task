@@ -9,6 +9,7 @@
   --form-btn-outline-colour: #1b050552;
   --fadeIn-animation: fadeIn 1s ease-in-out;
   --fadeOut-animation: fadeOut 1s ease-in-out;
+  --error-msg-border-clr: 3px solid var(--form-error-colour);
 }
 
 body {
@@ -28,6 +29,7 @@ body {
 .snt-form {
   position: relative;
   width: min(90%, 35rem);
+  min-height: 25rem;
 
   border-width: 3px;
   border-style: dotted;
@@ -60,7 +62,7 @@ body {
 
 .snt-form_heading {
   font-size: clamp(1rem, 0.45rem + 1.5vw, 2rem);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   opacity: 0;
 }
 
@@ -96,6 +98,7 @@ body {
 .controlgroup input {
   padding: 0.3rem 0.5rem;
   margin-bottom: 0.5rem;
+  border: none;
 }
 
 ::placeholder {
@@ -106,7 +109,8 @@ body {
 .controlgroup-checkbox {
   display: flex;
   justify-content: flex-start;
-  margin-top: 1rem;
+  accent-color: var(--form-focus-colour);
+  margin-top: 1.5rem;
 }
 
 .controlgroup-checkbox label {
@@ -132,6 +136,7 @@ body {
 }
 
 .control {
+  position: relative;
   display: flex;
   gap: 0.5rem;
 }
@@ -146,7 +151,7 @@ body {
   border: 2px solid var(--form-text-colour);
 
   padding: 0.5rem 2.5rem;
-  margin: 1rem auto 0;
+  margin: 1rem auto;
   transition: all 0.3s ease-in-out;
 
   cursor: pointer;
@@ -184,14 +189,9 @@ body {
   z-index: -1;
 }
 
-input[type="checkbox"] {
-  accent-color: var(--form-focus-colour);
-}
-
 input:focus,
 a:focus {
-  border: 2px solid var(--form-focus-text-colour);
-  outline: 2px solid var(--form-focus-colour);
+  outline: 3px solid var(--form-focus-colour);
 }
 
 input:valid {
@@ -207,6 +207,9 @@ input:focus:invalid {
 .email-error_msg,
 .tel-error_msg,
 .checkbox-error_msg {
+  width: max-content;
+  height: 1.5rem;
+  position: absolute;
   font-size: 0.7rem;
 }
 
@@ -214,7 +217,7 @@ input:focus:invalid {
   opacity: 1;
 }
 
-.spinner {
+.loading-msg {
   font-size: 2rem;
   text-transform: uppercase;
 }
